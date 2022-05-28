@@ -1,0 +1,7 @@
+.model nor
+.inputs x y 
+.outputs z
+.names x y z 
+00 1
+
+.end
