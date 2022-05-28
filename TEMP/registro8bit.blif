@@ -1,0 +1,13 @@
+.model REGISTRO8
+.inputs A7 A6 A5 A4 A3 A2 A1 A0
+.outputs 07 06 05 04 03 02 01 00
+.subckt REGISTRO A=A7 0=07
+.subckt REGISTRO A=A6 0=06
+.subckt REGISTRO A=A5 0=05
+.subckt REGISTRO A=A4 0=04
+.subckt REGISTRO A=A3 0=03
+.subckt REGISTRO A=A2 0=02
+.subckt REGISTRO A=A1 0=01
+.subckt REGISTRO A=A0 0=00
+.end
+.search registro.blif

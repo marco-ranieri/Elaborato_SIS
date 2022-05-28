@@ -1,0 +1,9 @@
+.model REGISTRO4
+.inputs A3 A2 A1 A0
+.outputs 03 022 01 00
+.subckt REGISTRO A=A3 0=03
+.subckt REGISTRO A=A2 0=02
+.subckt REGISTRO A=A1 0=01
+.subckt REGISTRO A=A0 0=07
+.search registro.blif
+.end

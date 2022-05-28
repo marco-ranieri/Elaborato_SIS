@@ -1,0 +1,16 @@
+.model COSTANTE050
+.outputs I7 I6 I5 I4 I3 I2 I1 I0
+
+.subckt ZERO1 OUT=I7
+.subckt ZERO1 OUT=I6
+.subckt ZERO1 OUT=I5
+.subckt ZERO1 OUT=I4
+.subckt UNO1 OUT=I3
+.subckt ZERO1 OUT=I2
+.subckt ZERO1 OUT=I1
+.subckt ZERO1 OUT=I0
+
+.search zero1.blif
+.search uno1.blif
+
+.end
