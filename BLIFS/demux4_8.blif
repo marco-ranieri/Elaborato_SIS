@@ -12,3 +12,5 @@
 .subckt DEMUX4_1 S1=S1 S0=S0 IN=I0 O3=A0 O2=B0 O1=C0 O0=D0
 
 .end
+
+.search demux4_1.blif

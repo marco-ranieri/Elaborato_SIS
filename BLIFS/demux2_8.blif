@@ -1,0 +1,16 @@
+.model DEMUX2_8
+.inputs S I7 I6 I5 I4 I3 I2 I1 I0
+.outputs A7 A6 A5 A4 A3 A2 A1 A0 B7 B6 B5 B4 B3 B2 B1 B0
+
+.subckt DEMUX2_1 S=S IN=I7 O1=A7 O0=B7
+.subckt DEMUX2_1 S=S IN=I6 O1=A6 O0=B6
+.subckt DEMUX2_1 S=S IN=I5 O1=A5 O0=B5
+.subckt DEMUX2_1 S=S IN=I4 O1=A4 O0=B4
+.subckt DEMUX2_1 S=S IN=I3 O1=A3 O0=B3
+.subckt DEMUX2_1 S=S IN=I2 O1=A2 O0=B2
+.subckt DEMUX2_1 S=S IN=I1 O1=A1 O0=B1
+.subckt DEMUX2_1 S=S IN=I0 O1=A0 O0=B0
+
+.end
+
+.search demux2_1.blif

@@ -1,0 +1,34 @@
+.model ELABORAZIONE_PH
+.inputs PH_CTRL1 PH_CTRL0 PH_IN7 PH_IN6 PH_IN5 PH_IN4 PH_IN3 PH_IN2 PH_IN1 PH_IN0 INIZIO
+.outputs PH_STATUS PH_OUT7 PH_OUT6 PH_OUT5 PH_OUT4 PH_OUT3 PH_OUT2 PH_OUT1 PH_OUT0
+
+
+# costanti
+
+# multiplexer 2 uscite 8 bit per stabilire se prendere in input il ph iniziale o l'accumulatore (il ph calcolato verso il bilanciamento) dal ciclo di clock precedente
+.subckt MUX2_8 S=INIZIO B7=PH_IN7 B6=PH_IN6 B5=PH_IN5 B4=PH_IN4 B3=PH_IN3 B2=PH_IN2 B1=PH_IN1 B0=PH_IN0 B7 B6 B5 B4 B3 B2 B1 B0 O7=PHA7 O6=PHA6 O5=PHA5 O4=PHA4 O3=PHA3 O2=PHA2 O1=PHA1 O0=PHA0
+
+# registro 8 bit per immagazzinare il valore iniziale del PH, o il valore modificato dall'apertura delle valvole
+.subckt REGISTRO8 A7=PHA7 A6=PHA6 A5=PHA5 A4=PHA4 A3=PHA3 A2=PHA2 A1=PHA1 A0=PHA0 O7=PHB7 O6=PHB6 O5=PHB5 O4=PHB4 O3=PHB3 O2=PHB2 O1=PHB1 O0=PHB0
+
+# demultiplexer 4 uscite 8 bit per selezionare che strada di calcolo prende il PH iniziale (00 01 10 11)
+.subckt DEMUX4_8 S1=PH_CTRL1 S0=PH_CTRL0 I7=PHB7 I6=PHB6 I5=PHB5 I4=PHB4 I3=PHB3 I2=PHB2 I1=PHB1 I0=PHB0 A7=PH_OK7 A6=PH_OK6 A5=PH_OK5 A4=PH_OK4 A3=PH_OK3 A2=PH_OK2 A1=PH_OK1 A0=PH_OK0 B7=PH_ACIDO7 B6=PH_ACIDO6 B5=PH_ACIDO5 B4=PH_ACIDO4 B3=PH_ACIDO3 B2=PH_ACIDO2 B1=PH_ACIDO1 B0=PH_ACIDO0 C7=PH_BASICO7 C6=PH_BASICO6 C5=PH_BASICO5 C4=PH_BASICO4 C3=PH_BASICO3 C2=PH_BASICO2 C1=PH_BASICO1 C0=PH_BASICO0 #D7 D6 D5 D4 D3 D2 D1 D0
+
+# sottrattore 0,50 per ph basico
+
+# sommatore 0,25 per ph acido
+
+# multiplexer 4 ingressi 8 bit per prendere il valore di ph corretto per il confronto
+
+# comparatore minore di 7
+
+# comparatore maggiore di 8
+
+# or
+
+# demultiplexer per mandare in output il valore del ph bilanciato, o rimandarlo al registro per il calcolo al prossimo ciclo di clock
+
+# multiplexer 4 ingressi 8 bit per mandare in output il valore di ph bilanciato, oppure zero se ERR
+
+
+.end
