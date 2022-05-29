@@ -1,5 +1,5 @@
 .model REGISTRO
 .inputs A
-.outputs 0
-.latch A 0 re NIL
+.outputs O
+.latch A O re NIL 0
 .end

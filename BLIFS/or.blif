@@ -1,7 +1,7 @@
-.model or
-.inputs x y 
-.outputs z
-.names x y z 
+.model OR
+.inputs X Y 
+.outputs Z
+.names X Y Z 
 01 1
 10 1
 11 1

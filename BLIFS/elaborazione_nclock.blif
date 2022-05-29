@@ -1,0 +1,52 @@
+.model ELABORAZIONE
+.inputs PH_CTRL1 PH_CTRL0 STATUS
+.outputs  OUT7 OUT6 OUT5 OUT4 OUT3 OUT2 OUT1 OUT0
+
+# costanti
+.names ZERO
+.subckt UNO O=UNO1
+
+.subckt COSTANTE0 O7=H7 O6=H6 O5=H5 O4=H4 O3=H3 O2=H2 O1=H1 O0=H0
+
+# comparatore 2 bit per selezionare inputs di PH_CTRL (01 e 10 validi)
+.subckt COMPARATORE2 A1=PH_CTRL1 A0=PH_CTRL0 B1=UNO1 B0=ZERO O=C1
+.subckt COMPARATORE2 A1=PH_CTRL1 A0=PH_CTRL0 B1=ZERO B0=UNO1 O=C0
+
+.subckt XOR X=C1 Y=C0 Z=Z1
+
+# multiplexer 2 ingressi da 8 bit per selezionare l'input del contatore (zero o l'accumulatore) 
+.subckt MUX2_8 S=Z1 A7=H7 A6=H6 A5=H5 A4=H4 A3=H3 A2=H2 A1=H1 A0=H0 B7=NCLK7 B6=NCLK6 B5=NCLK5 B4=NCLK4 B3=NCLK3 B2=NCLK2 B1=NCLK1 B0=NCLK0 O7=N_7 O6=N_6 O5=N_5 O4=N_4 O3=N_3 O2=N_2 O1=N_1 O0=N_0
+
+# registro 8 bit per memorizzare contatore
+.subckt REGISTRO8 A7=N_7 A6=N_6 A5=N_5 A4=N_4 A3=N_3 A2=N_2 A1=N_1 A0=N_0 O7=REG7 O6=REG6 O5=REG5 O4=REG4 O3=REG3 O2=REG2 O1=REG1 O0=REG0
+
+# incremento contatore di 1 ad ogni clock
+.subckt INCREMENTO8 A7=REG7 A6=REG6 A5=REG5 A4=REG4 A3=REG3 A2=REG2 A1=REG1 A0=REG0 O7=NCLK7 O6=NCLK6 O5=NCLK5 O4=NCLK4 O3=NCLK3 O2=NCLK2 O1=NCLK1 O0=NCLK0
+
+# multiplexer per controllo status da unità elaborazione PH
+.subckt MUX2_8 S=STATUS A7=NCLK7 A6=NCLK6 A5=NCLK5 A4=NCLK4 A3=NCLK3 A2=NCLK2 A1=NCLK1 A0=NCLK0 B7=H7 B6=H6 B5=H5 B4=H4 B3=H3 B2=H2 B1=H1 B0=H0 O7=OUT7 O6=OUT6 O5=OUT5 O4=OUT4 O3=OUT3 O2=OUT2 O1=OUT1 O0=OUT0
+
+
+.model UNO
+.outputs O
+.names O
+1
+.end
+
+.model COSTANTE0
+.outputs O7 O6 O5 O4 O3 O2 O1 O0
+.names O7
+.names O6
+.names O5
+.names O4
+.names O3
+.names O2
+.names O1
+.names O0
+.end
+
+.search xor.blif
+.search comparatore2.blif
+.search registro8bit.blif
+.search mux2_8.blif
+.search incremento8.blif
