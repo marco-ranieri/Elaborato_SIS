@@ -1,6 +1,6 @@
-.model MAGGIORE.blif
+.model MINORE.blif
 .inputs A7 A6 A5 A4 A3 A2 A1 A0 B7 B6 B5 B4 B3 B2 B1 B0
-.outputs AgtB
+.outputs AleB
 .subckt xor x=A7 y=B7 z=X7
 .subckt xor x=A6 y=B6 z=X6
 .subckt xor x=A5 y=B5 z=X5
@@ -10,15 +10,15 @@
 .subckt xor x=A1 y=B1 z=X1
 .subckt xor x=A0 y=B0 z=X0
 
-.names A7 A6 A5 A4 A3 A2 A1 A0 X7 X6 X5 X4 X3 X2 X1 X0 AgtB
-1-------1------- 1
--1------01------ 1
---1-----001----- 1
----1----0001---- 1
-----1---00001--- 1
------1--000001-- 1
-------1-0000001- 1
--------100000001 1
+.names A7 A6 A5 A4 A3 A2 A1 A0 X7 X6 X5 X4 X3 X2 X1 X0 AleB
+0-------1------- 1
+-0------01------ 1
+--0-----001----- 1
+---0----0001---- 1
+----0---00001--- 1
+-----0--000001-- 1
+------0-0000001- 1
+-------000000001 1
 
 .search xor.blif
 .end
