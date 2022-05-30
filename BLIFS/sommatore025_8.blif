@@ -1,6 +1,6 @@
 .model SOMMATORE025_8
 .inputs A7 A6 A5 A4 A3 A2 A1 A0
-.outputs O7 O6 O5 O4 O3 O2 O1 O0 COUT
+.outputs O7 O6 O5 O4 O3 O2 O1 O0
 
 # costante 0
 .names ZERO
