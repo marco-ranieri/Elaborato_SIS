@@ -3,8 +3,8 @@
 .outputs FINE_OP ERRORE_SENSORE VALVOLA_ACIDO VALVOLA_BASICO FSMCTRL_1 \
 FSMCTRL_0 INIZIO
 .latch    VALVOLA_BASICO LatchOut_v11   0
-.latch    [51] LatchOut_v12   1
-.latch    [52] LatchOut_v13   1
+.latch    [79] LatchOut_v12   1
+.latch    [80] LatchOut_v13   1
 .start_kiss
 .i 11
 .o 7
@@ -48,24 +48,24 @@ FSMCTRL_0 INIZIO
 .code OK 001
 .code BASICO 000
 .code ACIDO 100
-.names RST START LatchOut_v12 ERRORE_SENSORE [51]
+.names RST START LatchOut_v12 ERRORE_SENSORE [79]
 1--- 1
 ---1 1
 -01- 1
-.names [51] FINE_OP ERRORE_SENSORE [52]
+.names [79] FINE_OP ERRORE_SENSORE [80]
 -1- 1
 1-0 1
-.names RST PH_STATUS LatchOut_v11 LatchOut_v13 [51] FSMCTRL_0 INIZIO FINE_OP
+.names RST PH_STATUS LatchOut_v11 LatchOut_v13 [79] FSMCTRL_0 INIZIO FINE_OP
 011---- 1
 ---10-0 1
 -0-000- 1
-.names RST START PH7 LatchOut_v12 LatchOut_v13 [83] [84] ERRORE_SENSORE
+.names RST START PH7 LatchOut_v12 LatchOut_v13 [121] [122] ERRORE_SENSORE
 0--10-- 1
 0111-10 1
-.names [51] FINE_OP FSMCTRL_0 VALVOLA_ACIDO
+.names [79] FINE_OP FSMCTRL_0 VALVOLA_ACIDO
 000 1
-.names RST START PH7 PH4 PH_STATUS LatchOut_v11 LatchOut_v12 LatchOut_v13 [84] \
-VALVOLA_BASICO
+.names RST START PH7 PH4 PH_STATUS LatchOut_v11 LatchOut_v12 LatchOut_v13 \
+[122] VALVOLA_BASICO
 0---01--- 1
 0100--11- 1
 010---111 1
@@ -75,29 +75,29 @@ VALVOLA_BASICO
 .names LatchOut_v13 ERRORE_SENSORE VALVOLA_BASICO FSMCTRL_0
 --1 1
 11- 1
-.names PH7 PH6 PH5 PH4 LatchOut_v12 [51] [83] INIZIO
+.names PH7 PH6 PH5 PH4 LatchOut_v12 [79] [121] INIZIO
 -01-10- 1
 0--010- 1
 -1-010- 1
 --0-101 1
-.names PH4 PH3 PH2 PH1 PH0 [83]
+.names PH4 PH3 PH2 PH1 PH0 [121]
 1---- 1
 -1--- 1
 --1-- 1
 ---1- 1
 ----1 1
-.names PH6 PH5 [84]
+.names PH6 PH5 [122]
 0- 1
 -0 1
 .exdc 
 .inputs RST START PH7 PH6 PH5 PH4 PH3 PH2 PH1 PH0 PH_STATUS LatchOut_v11 \
 LatchOut_v12 LatchOut_v13
-.outputs [51] [52] FINE_OP ERRORE_SENSORE VALVOLA_ACIDO VALVOLA_BASICO \
+.outputs [79] [80] FINE_OP ERRORE_SENSORE VALVOLA_ACIDO VALVOLA_BASICO \
 FSMCTRL_1 FSMCTRL_0 INIZIO
-.names LatchOut_v11 LatchOut_v12 LatchOut_v13 [51]
+.names LatchOut_v11 LatchOut_v12 LatchOut_v13 [79]
 11- 1
 1-1 1
-.names LatchOut_v11 LatchOut_v12 LatchOut_v13 [52]
+.names LatchOut_v11 LatchOut_v12 LatchOut_v13 [80]
 11- 1
 1-1 1
 .names LatchOut_v11 LatchOut_v12 LatchOut_v13 FINE_OP

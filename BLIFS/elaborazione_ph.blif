@@ -34,10 +34,10 @@
 # or
 .subckt OR X=MINORE Y=MAGGIORE Z=PH_STATUS
 
-# demultiplexer 2 uscite 8 bit per mandare in FINALEput il valore del ph bilanciato, o rimandarlo al registro per il calcolo al prossimo ciclo di clock (0 1)
+# demultiplexer 2 uscite 8 bit per mandare in output il valore del ph bilanciato, o rimandarlo al registro per il calcolo al prossimo ciclo di clock (0 1)
 .subckt DEMUX2_8 S=PH_STATUS I7=PHC7 I6=PHC6 I5=PHC5 I4=PHC4 I3=PHC3 I2=PHC2 I1=PHC1 I0=PHC0 A7=PH_BIL7 A6=PH_BIL6 A5=PH_BIL5 A4=PH_BIL4 A3=PH_BIL3 A2=PH_BIL2 A1=PH_BIL1 A0=PH_BIL0 B7=PH_notBIL7 B6=PH_notBIL6 B5=PH_notBIL5 B4=PH_notBIL4 B3=PH_notBIL3 B2=PH_notBIL2 B1=PH_notBIL1 B0=PH_notBIL0
 
-# multiplexer 4 ingressi 8 bit per mandare in FINALEput il valore di ph bilanciato, oppure zero se ERR (00 01 10 11)
+# multiplexer 4 ingressi 8 bit per mandare in output il valore di ph bilanciato, oppure zero se ERR (00 01 10 11)
 .subckt MUX4_8 S1=PH_CTRL1 S0=PH_CTRL0 A7=PH_BIL7 A6=PH_BIL6 A5=PH_BIL5 A4=PH_BIL4 A3=PH_BIL3 A2=PH_BIL2 A1=PH_BIL1 A0=PH_BIL0 B7=PH_BIL7 B6=PH_BIL6 B5=PH_BIL5 B4=PH_BIL4 B3=PH_BIL3 B2=PH_BIL2 B1=PH_BIL1 B0=PH_BIL0 C7=PH_BIL7 C6=PH_BIL6 C5=PH_BIL5 C4=PH_BIL4 C3=PH_BIL3 C2=PH_BIL2 C1=PH_BIL1 C0=PH_BIL0 D7=H7 D6=H6 D5=H5 D4=H4 D3=H3 D2=H2 D1=H1 D0=H0 O7=PH_FINALE7 O6=PH_FINALE6 O5=PH_FINALE5 O4=PH_FINALE4 O3=PH_FINALE3 O2=PH_FINALE2 O1=PH_FINALE1 O0=PH_FINALE0
 
 .end
