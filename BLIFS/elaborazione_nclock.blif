@@ -1,24 +1,17 @@
 .model ELABORAZIONE_NCLOCK
-.inputs PH_CTRL1 PH_CTRL0 INIZIO PH_STATUS
+.inputs PH_CTRL1 PH_CTRL0 INIZIO #PH_STATUS
 .outputs  OUT7 OUT6 OUT5 OUT4 OUT3 OUT2 OUT1 OUT0
 
 # costanti
 .names ZERO
 .subckt UNO O=UNO1
 
-.subckt COSTANTE0 O7=H7 O6=H6 O5=H5 O4=H4 O3=H3 O2=H2 O1=H1 O0=H0
+.subckt COSTANTE1 O7=H7 O6=H6 O5=H5 O4=H4 O3=H3 O2=H2 O1=H1 O0=H0
+.subckt COSTANTE0 O7=ZERO7 O6=ZERO6 O5=ZERO5 O4=ZERO4 O3=ZERO3 O2=ZERO2 O1=ZERO1 O0=ZERO0
 
-# comparatore 2 bit per selezionare inputs di PH_CTRL (01 e 10 validi)
-.subckt COMPARATORE2 A1=PH_CTRL1 A0=PH_CTRL0 B1=UNO1 B0=ZERO O=C1
-.subckt COMPARATORE2 A1=PH_CTRL1 A0=PH_CTRL0 B1=ZERO B0=UNO1 O=C0
-
-.subckt XNOR X=C1 Y=C0 Z=Z1
-
-# demultiplexer 2 ingressi da 8 bit per decidere che strada prende il valore iniziale del contatore (0)
-.subckt DEMUX2_8 S=Z1 I7=H7 I6=H6 I5=H5 I4=H4 I3=H3 I2=H2 I1=H1 I0=H0 A7=DZ7 A6=DZ6 A5=DZ5 A4=DZ4 A3=DZ3 A2=DZ2 A1=DZ1 A0=DZ0 B7=DE7 B6=DE6 B5=DE5 B4=DE4 B3=DE3 B2=DE2 B1=DE1 B0=DE0
 
 # multiplexer 2 ingressi da 8 bit per selezionare l'input del contatore (zero o l'accumulatore) 
-.subckt MUX2_8 S=INIZIO A7=NCLK7 A6=NCLK6 A5=NCLK5 A4=NCLK4 A3=NCLK3 A2=NCLK2 A1=NCLK1 A0=NCLK0 B7=DE7 B6=DE6 B5=DE5 B4=DE4 B3=DE3 B2=DE2 B1=DE1 B0=DE0 O7=N_7 O6=N_6 O5=N_5 O4=N_4 O3=N_3 O2=N_2 O1=N_1 O0=N_0
+.subckt MUX2_8 S=INIZIO A7=NCLK7 A6=NCLK6 A5=NCLK5 A4=NCLK4 A3=NCLK3 A2=NCLK2 A1=NCLK1 A0=NCLK0 B7=H7 B6=H6 B5=H5 B4=H4 B3=H3 B2=H2 B1=H1 B0=H0 O7=N_7 O6=N_6 O5=N_5 O4=N_4 O3=N_3 O2=N_2 O1=N_1 O0=N_0
 
 # registro 8 bit per memorizzare contatore
 .subckt REGISTRO8 A7=N_7 A6=N_6 A5=N_5 A4=N_4 A3=N_3 A2=N_2 A1=N_1 A0=N_0 O7=REG7 O6=REG6 O5=REG5 O4=REG4 O3=REG3 O2=REG2 O1=REG1 O0=REG0
@@ -26,8 +19,16 @@
 # incremento contatore di 1 ad ogni clock
 .subckt INCREMENTO8 A7=REG7 A6=REG6 A5=REG5 A4=REG4 A3=REG3 A2=REG2 A1=REG1 A0=REG0 O7=NCLK7 O6=NCLK6 O5=NCLK5 O4=NCLK4 O3=NCLK3 O2=NCLK2 O1=NCLK1 O0=NCLK0
 
+# comparatore 2 bit per selezionare inputs di PH_CTRL (01 e 10 validi)
+.subckt COMPARATORE2 A1=PH_CTRL1 A0=PH_CTRL0 B1=UNO1 B0=ZERO O=C1
+.subckt COMPARATORE2 A1=PH_CTRL1 A0=PH_CTRL0 B1=ZERO B0=UNO1 O=C0
+
+# XNOR per filtrate i valori di PH_CTRL (ritorna 1 se sono 00 (ph bilanciato) o 11 (errore - non può mai arrivare in input qui questo valore), 
+# ritorna 0 se sono 10 oppure 01 (ph non ancora bilanciato)
+.subckt XNOR X=C1 Y=C0 Z=Z1
+
 # multiplexer per controllo status da unità elaborazione PH e decidere output (contatore, o zero) del contatore
-.subckt MUX2_8 S=PH_STATUS A7=NCLK7 A6=NCLK6 A5=NCLK5 A4=NCLK4 A3=NCLK3 A2=NCLK2 A1=NCLK1 A0=NCLK0 B7=DZ7 B6=DZ6 B5=DZ5 B4=DZ4 B3=DZ3 B2=DZ2 B1=DZ1 B0=DZ0 O7=OUT7 O6=OUT6 O5=OUT5 O4=OUT4 O3=OUT3 O2=OUT2 O1=OUT1 O0=OUT0
+.subckt MUX2_8 S=Z1 A7=ZERO7 A6=ZERO6 A5=ZERO5 A4=ZERO4 A3=ZERO3 A2=ZERO2 A1=ZERO1 A0=ZERO0 B7=NCLK7 B6=NCLK6 B5=NCLK5 B4=NCLK4 B3=NCLK3 B2=NCLK2 B1=NCLK1 B0=NCLK0 O7=OUT7 O6=OUT6 O5=OUT5 O4=OUT4 O3=OUT3 O2=OUT2 O1=OUT1 O0=OUT0
 
 
 .model UNO
