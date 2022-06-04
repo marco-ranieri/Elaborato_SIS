@@ -1,6 +1,6 @@
-.model and
-.inputs x y 
-.outputs z
-.names x y z
+.model AND
+.inputs X Y 
+.outputs Z
+.names X Y Z
 11 1
 .end

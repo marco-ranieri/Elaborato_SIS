@@ -1,7 +1,7 @@
-.model nor
-.inputs x y 
-.outputs z
-.names x y z 
+.model NOR
+.inputs X Y 
+.outputs Z
+.names X Y Z 
 00 1
 
 .end
