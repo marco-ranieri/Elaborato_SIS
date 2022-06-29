@@ -1,0 +1,7 @@
+.model XOR
+.inputs X Y
+.outputs Z
+.names X Y Z 
+01 1
+10 1
+.end

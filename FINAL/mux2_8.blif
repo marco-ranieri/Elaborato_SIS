@@ -1,0 +1,16 @@
+.model MUX2_8
+.inputs S A7 A6 A5 A4 A3 A2 A1 A0 B7 B6 B5 B4 B3 B2 B1 B0
+.outputs O7 O6 O5 O4 O3 O2 O1 O0
+
+.subckt MUX2_1 S=S I1=A7 I0=B7 OUT=O7
+.subckt MUX2_1 S=S I1=A6 I0=B6 OUT=O6
+.subckt MUX2_1 S=S I1=A5 I0=B5 OUT=O5
+.subckt MUX2_1 S=S I1=A4 I0=B4 OUT=O4
+.subckt MUX2_1 S=S I1=A3 I0=B3 OUT=O3
+.subckt MUX2_1 S=S I1=A2 I0=B2 OUT=O2
+.subckt MUX2_1 S=S I1=A1 I0=B1 OUT=O1
+.subckt MUX2_1 S=S I1=A0 I0=B0 OUT=O0
+
+.search mux2_1.blif
+
+.end
